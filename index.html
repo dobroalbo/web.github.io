@@ -37,7 +37,7 @@ height:100%;
 
 }
 body::after {
-width:1920px;
+
 min-height:700px;
 height:100%;
   content: "";
@@ -152,7 +152,7 @@ height:40px;
 }
 #fr_3_wrap{
 width:800px;
-height:260px;
+height:225px;
 }
 .menu_fr{
 float:right;
@@ -331,7 +331,7 @@ border-collapse: collapse;
 }
 #fr_3{
 width:800px;
-height:300px;
+height:225px;
 position:absolute;
 left:10px;
 top:545px;
@@ -497,7 +497,7 @@ function getCookie(name) {
 	  return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
-
+$("body").css("width",screen.width);
 $("html").css("width",screen.width);
 $("#main").css("width",screen.width);
 $("#footer").css("width",screen.width);
