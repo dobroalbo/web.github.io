@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="initial-scale=1.0">
+<meta charset="UTF-8">
 <title>Web-Interface</title>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-	  <link href="https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap" rel="stylesheet">
-	  
-<style>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap" rel="stylesheet">
 
+<style>
+.fix{
+table-layout:fixed;
+}
 .material-icons.white { color: lightgray;border:1px solid black; }
 
 
@@ -18,7 +21,7 @@ box-sizing:border-box;
 }
 
 html{
-height:100%;
+height: 100%;
 min-height:700px;
 min-width:1000px;
 
@@ -27,7 +30,7 @@ min-width:1000px;
 
 
 body{
-width:inherit;
+
 min-height:700px;
 user-select: none;
 height:100%;
@@ -49,10 +52,12 @@ height:100%;
 }
 .bord{
 border:1px solid lightgray;
+ box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+ border-radius:2px;
 }
-#fr_0i{
+#fr_0{
 
-width:500px;
+
 position:absolute;
 left:10px;
 top:10px;
@@ -81,9 +86,9 @@ height:50px;
 
 #fr_1{
 
-width:500px;
+
 position:absolute;
-left:600px;
+left:410px;
 top:10px;
 background:white;
 }
@@ -103,10 +108,9 @@ height:50px;
 }
 #fr_2{
 
-width:1100px;
 position:absolute;
 left:10px;
-top:200px;
+top:270px;
 background:white;
 }
 #fr_2_0{
@@ -121,8 +125,34 @@ height:40px;
 
 #fr_2_1{
 border-bottom:1px solid gray;
-height:50px;
+height:50px;}
 
+#fr_2_wrap{
+width:800px;
+height:225px;
+
+}
+#fr_3i{
+width:600px;
+height:300px;
+position:absolute;
+left:10px;
+top:400px;
+background:white;
+
+}
+#fr_3_0{
+
+user-select: none;
+font-family: 'Open Sans', sans-serif;
+color:#48b774;
+border-bottom:1px solid gray;
+background:;
+height:40px;
+}
+#fr_3_wrap{
+width:800px;
+height:260px;
 }
 .menu_fr{
 float:right;
@@ -145,7 +175,7 @@ top:0px;
 
 .a{
 
-width:500px;
+
 position:absolute;
 left:10px;
 top:10px;
@@ -164,10 +194,9 @@ position:absolute;
 
 .norm{
 height:auto;
-width:500px;
+
 position:absolute;
-left:10px;
-top:10px;
+
 background:white;
 
 
@@ -176,7 +205,7 @@ background:white;
 }
 
 .mini{
-width:auto;
+width:300px;
 height:auto;
 float:left;
 background:white;
@@ -209,6 +238,10 @@ bottom:0px;
 
 
 }
+#map {
+    height: 100%;
+  }
+
 #main{
 width:inherit;
 height:calc(100% - 40px);
@@ -233,6 +266,7 @@ width:250px;
 background:white;
 bottom:40px;
 visibility:hidden;
+z-index:9999;
 }
 .minPan{
 border:1px solid gray;
@@ -260,7 +294,49 @@ background-color: #f1f1f1;
 
 }
 .wrapCont{
-height:auto;
+height:210px;
+}
+tr:hover{
+cursor:pointer;
+
+}
+.pagl{
+margin-left:20px;
+float:left;
+border:1px solid gray;
+border-radius:20px;
+margin-right:20px;
+font-size:10px;
+height:20px;
+}
+.paglFr{
+float:left;
+padding-left:20px;
+padding-right:20px;
+
+
+}
+.float{
+float:left;
+}
+.f{
+font-size:15px;
+}
+.f:hover{
+cursor:pointer;
+
+}
+table{
+border-collapse: collapse;
+}
+#fr_3{
+width:800px;
+height:300px;
+position:absolute;
+left:10px;
+top:545px;
+background:white;
+
 }
 </style>
 </head>
@@ -270,6 +346,12 @@ height:auto;
 
 	<div id="fr_0_0" class="menu">
 		<div class="nameVkl">СПИСОК ПРИБОРОВ</div>
+		<div class="pagl">
+		<div class="float inL"><i class="material-icons f">keyboard_arrow_left</i></div>
+		<div class="paglFr"></div>
+		<div class="float inR"><i class="material-icons f">keyboard_arrow_right</i></div>
+		
+		</div>
 		<div class="menu_fr">
 		<i class="material-icons white min btnMenu">minimize</i>
 		<i class="material-icons white ful btnMenu">check_box_outline_blank</i>
@@ -284,21 +366,7 @@ height:auto;
 			<th>тип прибора</th>
 			<th>местоположение</th>
 		</tr>
-		<tr>
-			<td>1</td>
-			<td>2</td>
-			<td>3</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>2</td>
-			<td>3</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>2</td>
-			<td>3</td>
-		</tr>
+		
 	</table>
 		
 	
@@ -310,9 +378,14 @@ height:auto;
 
 
 
-<div id="fr_1" class="products bord">
+<div id="fr_1" class="products bord norm">
 	<div id="fr_1_0" class="menu">
 		<div class="nameVkl">СОБЫТИЯ</div>
+		<div class="pagl">
+		<div class="float inL"><i class="material-icons f">keyboard_arrow_left</i></div>
+		<div class="paglFr"></div>
+		<div class="float inR"><i class="material-icons f">keyboard_arrow_right</i></div>
+		</div>
 		<div class="menu_fr">
 		<i class="material-icons white min btnMenu">minimize</i>
 		<i class="material-icons white ful btnMenu">check_box_outline_blank</i>
@@ -323,12 +396,26 @@ height:auto;
 	<div id="fr_1_wrap" class="wrapCont">
 	
 
-		<div id="fr_1_1">тип события</div>
+		<table>
+		<tr>
+			<th>ТИП СОБЫТИЯ</th>
+			<th>ВРЕМЯ СОБЫТИЯ</th>
+			<th>I1 МАКС</th>
+			<th>I2 МАКС</th>
+			<th>I3 МАКС</th>
+			<th>U1 МАКС</th>
+			<th>U2 МАКС</th>
+			<th>U3 МАКС</th>
+			
+			
+		</tr>
+		
+	</table>
 	</div>
 </div>
 
 
-<div id="fr_2" class="products bord">
+<div id="fr_2" class="products bord norm">
 	<div id="fr_2_0" class="menu">
 		<div class="nameVkl">СЕАНСЫ</div>
 		<div class="menu_fr">
@@ -341,10 +428,33 @@ height:auto;
 	
 	</div>
 	<div id="fr_2_wrap" class="wrapCont">
-		<div id="fr_2_1">тип события</div>
+		
 	</div>
 
 </div>
+
+<div id="fr_3" class="products bord norm">
+	<div id="fr_3_0" class="menu">
+		<div class="nameVkl">КАРТЫ</div>
+		<div class="menu_fr">
+		<i class="material-icons white min btnMenu">minimize</i>
+		<i class="material-icons white ful btnMenu">check_box_outline_blank</i>
+		<i class="material-icons white close btnMenu">clear</i>
+		</div>
+	
+	
+	
+	</div>
+	<div id="fr_3_wrap" class="wrapCont">
+		<div id="map"></div>
+	</div>
+
+</div>
+
+
+
+
+
 </div>
 <div id="footer">
 	<div>
@@ -359,11 +469,36 @@ height:auto;
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script>
+var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -50, lng: 20},
+          zoom: 2
+        });
+      }
+console.log($(window).height()+"outerHEight");
+console.log(window.outerHeight+"outerHEight");
+console.log(window.innerHeight+"innerHEight");
+console.log(window.screen.availHeight+"screen.avail");
+console.log(screen.height+"screen.Height");
+console.log($(window).height()+"screen.Height");
 
-console.log(screen.height);
+
+var date = new Date;
+date.setDate(date.getDate() + 7);
 
 
 
+
+function getCookie(name) {
+	  var matches = document.cookie.match(new RegExp(
+		"(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+	  ));
+	  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
+
+$("html").css("width",screen.width);
 $("#main").css("width",screen.width);
 $("#footer").css("width",screen.width);
 class Frame {
@@ -373,6 +508,9 @@ constructor(id){
 	this.memForm="";
 	this.top;
 	this.left;
+	this.z;
+	this.pag=1;
+	this.nLis=0;
 	this.btnMinT=id.children(".menu").children().children(".min");
 	this.btnFullT=id.children(".menu").children().children(".ful");
 	this.btnCloseT=id.children(".menu").children().children(".close");
@@ -387,9 +525,42 @@ constructor(id){
 fr0=new Frame($( "#fr_0"));
 fr1=new Frame($( "#fr_1"));
 fr2=new Frame($( "#fr_2"));
+fr3=new Frame($( "#fr_3"));
+
+fr0.top=getCookie('top0');
+fr0.left=getCookie('left0');
+fr0.z=getCookie('z0');
+
+fr1.top=getCookie('top1');
+fr1.left=getCookie('left1');
+fr1.z=getCookie('z1');
+fr2.top=getCookie('top2');
+fr2.left=getCookie('left2');
+fr2.z=getCookie('z2');
+fr3.top=getCookie('top3');
+fr3.left=getCookie('left3');
+fr3.z=getCookie('z3')
 
 
 
+fr0.frName.css("top",fr0.top);
+fr0.frName.css("left",fr0.left);
+fr0.frName.css("z-index",fr0.z);
+fr1.frName.css("top",fr1.top);
+fr1.frName.css("left",fr1.left);
+fr1.frName.css("z-index",fr1.z);
+
+
+fr2.frName.css("top",fr2.top);
+fr2.frName.css("left",fr2.left);
+fr2.frName.css("z-index",fr2.z);
+
+fr3.frName.css("top",fr3.top);
+fr3.frName.css("left",fr3.left);
+fr3.frName.css("z-index",fr3.z);
+console.log(getCookie('top0')+"top");
+console.log(getCookie('left0')+"left");
+console.log(document.cookie);
 //console.log(fr1.frName.children(".menu").children().children(".min"));
 //console.log(fr1.btnMinT);
 /*$("#fr_0_0>div.menu_fr>i.min").on("click",function(){
@@ -421,9 +592,19 @@ doResize(a,fr1);
 else if(b.attr("id")=="fr_2"){
 doResize(a,fr2);
 }
-
+else if(b.attr("id")=="fr_3"){
+doResize(a,fr3);
 }
+}
+$(".full").css("height",$("#main").css('height'));
+$(".full").css("width",screen.width);
+$( window ).resize(function() {
+  $(".full").css("height",$("#main").css('height'));
+$(".full").css("width",screen.width);
+});
 
+
+		
 function doResize(a,b){
 
 	if(a.attr("class")==b.btnMinT.attr("class")){
@@ -433,29 +614,55 @@ function doResize(a,b){
 		
 			case "norm":b.frName.removeClass("norm");b.frName.addClass("mini");b.resForm="mini";b.memForm="norm";console.log(0);
 			b.frName.children(".wrapCont").hide();
+			b.frName.children().children(".pagl").hide();
+			console.log($("#"+b.frName.attr('id')+"").attr("id"));
+			if($("#"+b.frName.attr('id')+"").attr("id")=="fr_3" ||$("#"+b.frName.attr('id')+"").attr("id")=="fr_2"){
 			
+			$("#"+b.frName.attr('id')+"").css("height","auto")
+			$("#"+b.frName.attr('id')+"").css("width","300")
+			}
 			break;
 			case "full":b.frName.removeClass("full");b.frName.addClass("mini");b.resForm="mini";b.memForm="full";console.log(1);
 			b.frName.children(".wrapCont").hide();
+			b.frName.children().children(".pagl").hide();
+			$("#"+b.frName.attr('id')+"").css("height","auto")
+			$("#"+b.frName.attr('id')+"").css("width","auto")
+			
 			
 			break;
 			case "mini":b.frName.removeClass("mini");b.frName.addClass(b.memForm);b.resForm=b.memForm;console.log(2);
 			b.frName.children(".wrapCont").show();
+			b.frName.children().children(".pagl").show();
+			if($("#"+b.frName.attr('id')+"").attr("id")=="fr_3" ||$("#"+b.frName.attr('id')+"").attr("id")=="fr_2"){
 			
-			
+			$("#"+b.frName.attr('id')+"").css("height","265")
+			$("#"+b.frName.attr('id')+"").css("width","800")
+			}
 			break;
 			
 			
 		}
+		
 	}
 	else if(a.attr("class")==b.btnFullT.attr("class")){
 	console.log("[]");
 	console.log();
 		switch(b.resForm){
-			case "norm":b.frName.removeClass("norm");b.frName.addClass("full");b.resForm="full";b.memForm="norm";fr0.frName.css("left","0");fr0.frName.css("top","0");break;
-			case "full":b.frName.removeClass("full");b.frName.addClass("norm");b.resForm="norm";break;
+			case "norm":b.frName.removeClass("norm");b.frName.addClass("full");b.resForm="full";b.memForm="norm";
+			b.frName.css("left","0");
+			b.frName.css("top","0");
+			b.frName.css("width",$("body").css("width"));
+			
+			break;
+			case "full":b.frName.removeClass("full");b.frName.addClass("norm");b.resForm="norm";
+			b.frName.css("width","auto");break;
+			
+			
 			case "mini":b.frName.removeClass("mini");b.frName.addClass("full");b.resForm="full";b.memForm="mini";
 			b.frName.children(".wrapCont").show();
+			b.frName.css("height","auto");
+			b.frName.children().children(".pagl").show();
+			
 			
 			break;
 			
@@ -491,7 +698,7 @@ function doResize(a,b){
 
 
 
-
+$("#fr_1 .paglFr").text("1 из 1");
 
 
 
@@ -502,28 +709,47 @@ function doResize(a,b){
 
 	
 	
-fr0.frName.draggable({containment: "#main",stack: ".products",cursor: "all-scroll",handle:"#fr_0_0"});	
-fr1.frName.draggable({containment: "#main",stack: ".products",cursor: "all-scroll",handle:"#fr_1_0"});
-fr2.frName.draggable({containment: "#main",stack: ".products",cursor: "all-scroll",handle:"#fr_2_0"});
-/*
-
-$("#fr_0_0>div.menu_fr>i.min").on("click",function(){
-	fr.removeClass("a");
-	fr.removeClass("fullScreen");
-	$("#fr_0_wrap").hide();
-	fr.addClass("minVers");
-});
-$("#fr_0_0>div.menu_fr>i.ful").on("click",function(){
-	
-	
-	fr.removeClass("a");
-	$( "#fr_0").addClass("fullScreen");
-	
-	});
-$("#fr_0_0>div.menu_fr>i.close").on("click",function(){$( "#fr_0" ).hide();});
-
-
-*/
+fr0.frName.draggable({containment: "#main",stack: ".products",cursor: "all-scroll",handle:"#fr_0_0",
+stop: function( event, ui ) {  var t= $(this).css('top')  ;var l= $(this).css('left'); var z= $(this).css('z-index');
+				document.cookie = "left0="+l+"; expires=" + date.toUTCString();
+				document.cookie = "top0="+t+"; expires=" + date.toUTCString();
+				document.cookie = "z0="+z+"; expires=" + date.toUTCString();
+				console.log(      
+				$(this).css('top'),
+				$(this).css('left')
+				);
+				}
+});	
+fr1.frName.draggable({containment: "#main",stack: ".products",cursor: "all-scroll",handle:"#fr_1_0",
+stop: function( event, ui ) {  var t= $(this).css('top')  ;var l= $(this).css('left'); var z= $(this).css('z-index');
+				document.cookie = "left1="+l+"; expires=" + date.toUTCString();
+				document.cookie = "top1="+t+"; expires=" + date.toUTCString();
+				document.cookie = "z1="+z+"; expires=" + date.toUTCString();
+				console.log(      
+				$(this).css('top'),
+				$(this).css('left')
+				);
+				}});
+fr2.frName.draggable({containment: "#main",stack: ".products",cursor: "all-scroll",handle:"#fr_2_0",
+stop: function( event, ui ) {  var t= $(this).css('top')  ;var l= $(this).css('left'); var z= $(this).css('z-index');
+				document.cookie = "left2="+l+"; expires=" + date.toUTCString();
+				document.cookie = "top2="+t+"; expires=" + date.toUTCString();
+				document.cookie = "z2="+z+"; expires=" + date.toUTCString();
+				console.log(      
+				$(this).css('top'),
+				$(this).css('left')
+				);
+				}});
+fr3.frName.draggable({containment: "#main",stack: ".products",cursor: "all-scroll",handle:"#fr_3_0",
+stop: function( event, ui ) {  var t= $(this).css('top')  ;var l= $(this).css('left'); var z= $(this).css('z-index');
+				document.cookie = "left3="+l+"; expires=" + date.toUTCString();
+				document.cookie = "top3="+t+"; expires=" + date.toUTCString();
+				document.cookie = "z3="+z+"; expires=" + date.toUTCString();
+				console.log(      
+				$(this).css('top'),
+				$(this).css('left')
+				);
+				}});
 
 
 
@@ -539,6 +765,12 @@ $(".contMenu").css("visibility","hidden");
 else $(".contMenu").css("visibility","visible");
 }
 
+
+var listPr=[];
+var eventPr=[];
+
+
+
 let getXMLFile= function(path, callback){
 	let request =new XMLHttpRequest();
 	request.open("GET",path);
@@ -546,30 +778,309 @@ let getXMLFile= function(path, callback){
 	request.onreadystatechange=function(){
 		if(request.readyState===4 & request.status === 200){
 			callback(request.responseXML);
-		
+			
 		}
+		else if(request.readyState===4 & request.status === 404) {$("#fr_1 .paglFr").text("1 из 1");alert("по выброному прибору события отсутствуют");}
 	
 	};
 	request.send();
 
 };
 
+//запрос
+
 getXMLFile("list.xml", function(xml){
-	console.log(xml);
+	
+	
+   var xmlDoc=xml;
+	
+	var x=xmlDoc.getElementsByTagName("numb");
+	var y=xmlDoc.getElementsByTagName("type");
+	var z=xmlDoc.getElementsByTagName("loc");
+	var count;
+	if($("#fr_0").hasClass("full")){
+	    var b=parseInt($("body").css("height"));
+		var w=parseInt($("table tr").css("height"));
+		var h=parseInt($("#fr_0").css("height"));
+		var k=parseInt($("#fr_0_0").css("height"));
+		var n=(b-w-k)/w;
+		var v=Math.floor(n);
+		
+	count=Math.ceil(x.length/n);
+	console.log(count+"s");
+	}
+	else{
+	count=Math.ceil(x.length/5);}
+	console.log(count);
+	$("#fr_0 .paglFr").text("1 из "+count);
+	fr0.nList=count;
+	
+	for(var i=0;i<x.length;i++){
+		
+		listPr[i]={
+		name:x[i].childNodes[0].nodeValue,
+		type:y[i].childNodes[0].nodeValue,
+		loc:z[i].childNodes[0].nodeValue
+		}
+	
+	
+	}
+	if($("#fr_0").hasClass("full")){
+		var b=parseInt($("body").css("height"));
+		var w=parseInt($("table tr").css("height"));
+		var h=parseInt($("#fr_0").css("height"));
+		var k=parseInt($("#fr_0_0").css("height"));
+		var n=(b-40-35)/35;
+		var v=Math.floor(n);
+		console.log(b);
+		if(listPr.length<v){
+		for(var i=0;i<listPr.length;i++){
+		$("<tr enum='"+i+"'class='n'><td>" +listPr[i].name+"</td><td>" +listPr[i].type+"</td><td>" +listPr[i].loc+"</td></tr> ").appendTo("#fr_0 table");}
+		}
+		else{  for(var i=0;i<v;i++){
+		$("<tr enum='"+i+"'class='n'><td>" +listPr[i].name+"</td><td>" +listPr[i].type+"</td><td>" +listPr[i].loc+"</td></tr> ").appendTo("#fr_0 table");}
+		}  
+	}
+	
+	else{
+	
+	
+	for(var i=0;i<5;i++){
+		$("<tr enum='"+i+"'class='n'><td>" +listPr[i].name+"</td><td>" +listPr[i].type+"</td><td>" +listPr[i].loc+"</td></tr> ").appendTo("#fr_0 table");
+		
+	}
+	}
+$(".n").click(refer);
+$("#fr_0 table").css("min-width",$("#fr_0 table").css("width"));
+$("#fr_1 table").css("min-width",$("#fr_1 table").css("width"));
+
+
+
+
+
+
+
+
+
 });
 
+$("#fr_0 .inR").click(doRight);
+$("#fr_0 .inL").click(doLeft);
+
+
+
+function doRight(){
 
 
 
 
 
+var c=(5)*(fr0.pag+1);
+console.log("list "+listPr.length+"c="+c);
+if(listPr.length<c && fr0.pag!=fr0.nList){
+$("#fr_0 table tbody tr.n").remove();
+$('.n').unbind('click', refer);
+
+		var p=listPr.length%5;
+	console.log("vse");
+	for(var i=listPr.length-p;i<listPr.length;i++){
+		$("<tr enum='"+i+"'class='n'><td>" +listPr[i].name+"</td><td>" +listPr[i].type+"</td><td>" +listPr[i].loc+"</td></tr> ").appendTo("#fr_0 table");
+		
+	}
+	
+	$(".n").click(refer);
+	fr0.pag++;
+	$("#fr_0 .paglFr").text(fr0.pag+" из "+fr0.nList)
+	console.log(fr0.pag);
+	
+	}
+else if(listPr.length>c){
+
+
+	$("#fr_0 table tbody tr.n").remove();
+$('.n').unbind('click', refer);
+
+
+	for(var i=fr0.pag*5;i<c;i++){
+	
+	
+		$("<tr enum='"+i+"'class='n'><td>" +listPr[i].name+"</td><td>" +listPr[i].type+"</td><td>" +listPr[i].loc+"</td></tr> ").appendTo("#fr_0 table");
+		
+	};
+	
+	$(".n").click(refer);
+	fr0.pag++;
+	$("#fr_0 .paglFr").text(fr0.pag+" из "+fr0.nList)
+	
+console.log("1_"+fr0.pag,"2_"+fr0.nList);
+	
+}
+
+
+
+}
+
+
+function doLeft(){
+if(fr0.pag<=fr0.nList &&fr0.pag!=1){
+$("#fr_0 table tbody tr.n").remove();
+$('.n').unbind('click', refer);
+
+var c=(fr0.pag-2)*5;
+var z=(fr0.pag-1)*5;
+ console.log(c);
+for(var i=c;i<z;i++){
+	$("<tr enum='"+i+"'class='n'><td>" +listPr[i].name+"</td><td>" +listPr[i].type+"</td><td>" +listPr[i].loc+"</td></tr> ").appendTo("#fr_0 table");
+}
+$(".n").click(refer);
+fr0.pag--;
+	$("#fr_0 .paglFr").text(fr0.pag+" из "+fr0.nList)
+}
+else{console.log("min");}
+
+}
+
+
+
+
+function refer(){
+$("#fr_1 table tbody tr.n").remove();
+	
+	getXMLFile("event"+$(this).attr("enum")+".xml", function(xml){
+		 var xmlDoc=xml;
+	
+		var tp=xmlDoc.getElementsByTagName("type");
+		var tm=xmlDoc.getElementsByTagName("time");
+		var c1=xmlDoc.getElementsByTagName("i1");
+		var c2=xmlDoc.getElementsByTagName("i2");
+		var c3=xmlDoc.getElementsByTagName("i3");
+		var u1=xmlDoc.getElementsByTagName("u1");
+		var u2=xmlDoc.getElementsByTagName("u2");
+		var u3=xmlDoc.getElementsByTagName("u3");
+		
+		var count=Math.ceil(tp.length/5);
+		fr1.pag=1;
+		
+		$("#fr_1 .paglFr").text("1 из "+count);
+		fr1.nList=count;
+		
+		for(var i=0;i<tp.length;i++){
+		
+		eventPr[i]={
+		type:tp[i].childNodes[0].nodeValue,
+		time:tm[i].childNodes[0].nodeValue,
+		i1:c1[i].childNodes[0].nodeValue,
+		i2:c2[i].childNodes[0].nodeValue,
+		i3:c3[i].childNodes[0].nodeValue,
+		u1:u1[i].childNodes[0].nodeValue,
+		u2:u2[i].childNodes[0].nodeValue,
+		u3:u3[i].childNodes[0].nodeValue
+	
+		}
+		
+		}
+		if(tp.length<5){
+		for(var i=0;i<tp.length;i++){
+		$("<tr class='n'><td>" +eventPr[i].type+"</td><td>" +eventPr[i].time+"</td><td>" +eventPr[i].i1+"</td><td>" +eventPr[i].i2+"</td><td>" +eventPr[i].i3+"</td><td>" +eventPr[i].u1+"</td><td>" +eventPr[i].u2+"</td><td>" +eventPr[i].u3+"</td></tr> ").appendTo("#fr_1 table");
+		
+		}
+		}
+		else
+		for(var i=0;i<5;i++){
+		$("<tr class='n'><td>" +eventPr[i].type+"</td><td>" +eventPr[i].time+"</td><td>" +eventPr[i].i1+"</td><td>" +eventPr[i].i2+"</td><td>" +eventPr[i].i3+"</td><td>" +eventPr[i].u1+"</td><td>" +eventPr[i].u2+"</td><td>" +eventPr[i].u3+"</td></tr> ").appendTo("#fr_1 table");
+		
+		}
+	
+	});
+
+
+}
+
+$("#fr_1 .inR").click(doRightE);
+$("#fr_1 .inL").click(doLeftE);
+
+
+function doRightE(){
+
+var c=(5)*(fr1.pag+1);//начальная страница
+
+
+
+if(eventPr.length<c && fr1.pag!=fr1.nList){
+$("#fr_1 table tbody tr.n").remove();
+
+		var p=eventPr.length%5;
+		
+	
+	for(var i=eventPr.length-p;i<eventPr.length;i++){
+		
+		$("<tr class='n'><td>" +eventPr[i].type+"</td><td>" +eventPr[i].time+"</td><td>" +eventPr[i].i1+"</td><td>" +eventPr[i].i2+"</td><td>" +eventPr[i].i3+"</td><td>" +eventPr[i].u1+"</td><td>" +eventPr[i].u2+"</td><td>" +eventPr[i].u3+"</td></tr> ").appendTo("#fr_1 table");
+	}
+	
+	
+	fr1.pag++;
+	$("#fr_1 .paglFr").text(fr1.pag+" из "+fr1.nList);
+	
+	console.log("-> "+eventPr.length,fr1.pag,fr1.nList);
+	
+	}
+
+else if(fr1.pag!=fr1.nList){
+$("#fr_1 table tbody tr.n").remove();
+
+
+
+
+	for(var i=fr1.pag*5;i<c;i++){
+	
+	
+		
+		$("<tr class='n'><td>" +eventPr[i].type+"</td><td>" +eventPr[i].time+"</td><td>" +eventPr[i].i1+"</td><td>" +eventPr[i].i2+"</td><td>" +eventPr[i].i3+"</td><td>" +eventPr[i].u1+"</td><td>" +eventPr[i].u2+"</td><td>" +eventPr[i].u3+"</td></tr> ").appendTo("#fr_1 table");
+	};
+	
+	
+	fr1.pag++;
+	$("#fr_1 .paglFr").text(fr1.pag+" из "+fr1.nList)
+	console.log("-> "+eventPr.length,fr1.pag,fr1.nList);
+
+	
+}
+
+else {console.log();console.log("no "+eventPr.length,fr1.pag,fr1.nList);}
+
+}
+
+
+function doLeftE(){
+if(fr1.pag<=fr1.nList &&fr1.pag!=1){
+$("#fr_1 table tbody tr.n").remove();
+
+var c=(fr1.pag-2)*5;
+var z=(fr1.pag-1)*5;
+ console.log(c);
+for(var i=c;i<z;i++){
+	
+	$("<tr class='n'><td>" +eventPr[i].type+"</td><td>" +eventPr[i].time+"</td><td>" +eventPr[i].i1+"</td><td>" +eventPr[i].i2+"</td><td>" +eventPr[i].i3+"</td><td>" +eventPr[i].u1+"</td><td>" +eventPr[i].u2+"</td><td>" +eventPr[i].u3+"</td></tr> ").appendTo("#fr_1 table");
+}
+
+fr1.pag--;
+	$("#fr_1 .paglFr").text(fr1.pag+" из "+fr1.nList);
+	
+	
+	console.log("<- "+eventPr.length,fr1.pag,fr1.nList);
+	
+}
+else{console.log("min "+eventPr.length,fr1.pag,fr1.nList);}
+
+}
 
 
 
 
 
 </script>
-
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCL2lD2hSkltEdxjSpoinzbeYkYENBsWTI&callback=initMap"
+    async defer></script>
 
 
 </html>

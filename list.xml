@@ -1,7 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<note>
-  <to>Tove</to>
-  <from>Jani</from>
-  <heading>Reminder</heading>
-  <body>Don't forget me this weekend!</body>
-</note>
+<list_mech>
+	<mech>
+		<numb>1рсу</numb>
+		<type>2</type>
+		<loc>Москва</loc>
+
+	</mech>
+
+	<mech>
+		<numb>2шрф</numb>
+		<type>1</type>
+		<loc>Фрязино</loc>
+
+	</mech>
+
+	<mech>
+		<numb>3рсу</numb>
+		<type>2</type>
+		<loc>Щелково</loc>
+
+	</mech>
+
+	<mech>
+		<numb>4дру</numb>
+		<type>4</type>
+		<loc>Липецк</loc>
+
+	</mech>
+
+	<mech>
+		<numb>5дру</numb>
+		<type>4</type>
+		<loc>Иваново</loc>
+
+	</mech>
+	<mech>
+		<numb>6рсу</numb>
+		<type>2</type>
+		<loc>Фрязино</loc>
+
+	</mech>
+
+	<mech>
+		<numb>7шрф</numb>
+		<type>1</type>
+		<loc>Питер</loc>
+
+	</mech>
+
+	<mech>
+		<numb>8рсу</numb>
+		<type>2</type>
+		<loc>Щелково</loc>
+
+	</mech>
+
+	<mech>
+		<numb>9дру</numb>
+		<type>4</type>
+		<loc>Рядом</loc>
+
+	</mech>
+
+	<mech>
+		<numb>10дру</numb>
+		<type>4</type>
+		<loc>Неподалеку</loc>
+
+	</mech>
+		
+	<mech>
+		<numb>11дру</numb>
+		<type>4</type>
+		<loc>Щелково</loc>
+
+	</mech>
+	<mech>
+		<numb>12шрф</numb>
+		<type>1</type>
+		<loc>Фрязино</loc>
+
+	</mech>
+
+	<mech>
+		<numb>13рсу</numb>
+		<type>2</type>
+		<loc>Череповец</loc>
+
+	</mech>
+
+	<mech>
+		<numb>14дру</numb>
+		<type>4</type>
+		<loc>Щелково</loc>
+
+	</mech>
+
+	<mech>
+		<numb>15дру</numb>
+		<type>4</type>
+		<loc>Тагил</loc>
+
+	</mech>
+	<mech>
+		<numb>16рсу</numb>
+		<type>2</type>
+		<loc>Гольяново</loc>
+
+	</mech>
+
+	<mech>
+		<numb>17шрф</numb>
+		<type>1</type>
+		<loc>фрязино</loc>
+
+	</mech>
+	<mech>
+		<numb>1рсу</numb>
+		<type>2</type>
+		<loc>Москва</loc>
+
+	</mech>
+
+	<mech>
+		<numb>2шрф</numb>
+		<type>1</type>
+		<loc>Фрязино</loc>
+
+	</mech>
+
+	<mech>
+		<numb>3рсу</numb>
+		<type>2</type>
+		<loc>Щелково</loc>
+
+	</mech>
+
+	<mech>
+		<numb>4дру</numb>
+		<type>4</type>
+		<loc>Липецк</loc>
+
+	</mech>
+
+	<mech>
+		<numb>5дру</numb>
+		<type>4</type>
+		<loc>Иваново</loc>
+
+	</mech>
+	<mech>
+		<numb>6рсу</numb>
+		<type>2</type>
+		<loc>Фрязино</loc>
+
+	</mech>
+
+	<mech>
+		<numb>7шрф</numb>
+		<type>1</type>
+		<loc>Питер</loc>
+
+	</mech>
+
+	<mech>
+		<numb>8рсу</numb>
+		<type>2</type>
+		<loc>Щелково</loc>
+
+	</mech>
+
+	<mech>
+		<numb>9дру</numb>
+		<type>4</type>
+		<loc>Рядом</loc>
+
+	</mech>
+	
+
+</list_mech>
