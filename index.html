@@ -88,7 +88,7 @@ height:50px;
 
 
 position:absolute;
-left:410px;
+left:420px;
 top:10px;
 background:white;
 }
@@ -525,8 +525,8 @@ constructor(id){
 
 }
 console.log( )
-
-
+$("#fr_0 table").css("min-width","405px");
+$("#fr_1 table").css("min-width","810px");
 
 fr0=new Frame($( "#fr_0"));
 fr1=new Frame($( "#fr_1"));
@@ -609,9 +609,8 @@ $( window ).resize(function() {
 $(".full").css("width",screen.width);
 });
 		
-$("#fr_0 table").css("min-width",$("#fr_0 table").css("width"));
-$("#fr_1 table").css("min-width",$("#fr_1 table").css("width"));
-		
+
+	console.log($("#fr_0 table tr").css("width"))	;
 function doResize(a,b){
 		
 	if(a.attr("class")==b.btnMinT.attr("class")){
@@ -836,6 +835,7 @@ let getXMLFile= function(path, callback){
 };
 
 //запрос
+
 
 getXMLFile("list.xml", function(xml){
 	
