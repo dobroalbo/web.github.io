@@ -166,6 +166,7 @@ height:225px;
 }
 .menu_fr{
 float:right;
+margin-right:10px;
 
 }
 .nameVkl{
@@ -344,7 +345,7 @@ border-collapse: collapse;
 </head>
 <body>
 <div id="main">
-<div id="fr_0" class="norm bord" >
+<div id="fr_0" class="products norm bord" >
 
 	<div id="fr_0_0" class="menu">
 		<div class="nameVkl">СПИСОК ПРИБОРОВ</div>
@@ -513,6 +514,9 @@ constructor(id){
 	this.z;
 	this.pag=1;
 	this.nLis=0;
+	this.width=id.css("width");
+	this.x=id.css("left");
+	this.y=id.css("top");
 	this.btnMinT=id.children(".menu").children().children(".min");
 	this.btnFullT=id.children(".menu").children().children(".ful");
 	this.btnCloseT=id.children(".menu").children().children(".close");
@@ -520,7 +524,7 @@ constructor(id){
 	}
 
 }
-
+console.log( )
 
 
 
@@ -604,11 +608,12 @@ $( window ).resize(function() {
   $(".full").css("height",$("#main").css('height'));
 $(".full").css("width",screen.width);
 });
-
-
+		
+$("#fr_0 table").css("min-width",$("#fr_0 table").css("width"));
+$("#fr_1 table").css("min-width",$("#fr_1 table").css("width"));
 		
 function doResize(a,b){
-
+		
 	if(a.attr("class")==b.btnMinT.attr("class")){
 	console.log("_");
 	console.log(b.resForm);
@@ -618,18 +623,21 @@ function doResize(a,b){
 			b.frName.children(".wrapCont").hide();
 			b.frName.children().children(".pagl").hide();
 			console.log($("#"+b.frName.attr('id')+"").attr("id"));
-			if($("#"+b.frName.attr('id')+"").attr("id")=="fr_3" ||$("#"+b.frName.attr('id')+"").attr("id")=="fr_2"){
 			
-			$("#"+b.frName.attr('id')+"").css("height","auto")
-			$("#"+b.frName.attr('id')+"").css("width","300")
-			}
+			
+			$("#"+b.frName.attr('id')+"").css("height","auto");
+			$("#"+b.frName.attr('id')+"").css("width","300px");
+			
+			
+			
 			break;
 			case "full":b.frName.removeClass("full");b.frName.addClass("mini");b.resForm="mini";b.memForm="full";console.log(1);
 			b.frName.children(".wrapCont").hide();
 			b.frName.children().children(".pagl").hide();
 			$("#"+b.frName.attr('id')+"").css("height","auto")
-			$("#"+b.frName.attr('id')+"").css("width","auto")
-			
+			$("#"+b.frName.attr('id')+"").css("width","300px")
+			b.frName.css("left",b.left);
+			b.frName.css("top",b.top);
 			
 			break;
 			case "mini":b.frName.removeClass("mini");b.frName.addClass(b.memForm);b.resForm=b.memForm;console.log(2);
@@ -637,9 +645,11 @@ function doResize(a,b){
 			b.frName.children().children(".pagl").show();
 			if($("#"+b.frName.attr('id')+"").attr("id")=="fr_3" ||$("#"+b.frName.attr('id')+"").attr("id")=="fr_2"){
 			
-			$("#"+b.frName.attr('id')+"").css("height","265")
-			$("#"+b.frName.attr('id')+"").css("width","800")
+			$("#"+b.frName.attr('id')+"").css("height","265");
+			$("#"+b.frName.attr('id')+"").css("width","800");
 			}
+			else{$("#"+b.frName.attr('id')+"").css("width","auto");};
+			if($("#"+b.frName.attr('id')+"").attr("id")=="fr_3"){ $("#fr_3_wrap").css("height","225px");}
 			break;
 			
 			
@@ -649,28 +659,49 @@ function doResize(a,b){
 	else if(a.attr("class")==b.btnFullT.attr("class")){
 	console.log("[]");
 	console.log();
+		
+		
 		switch(b.resForm){
 			case "norm":b.frName.removeClass("norm");b.frName.addClass("full");b.resForm="full";b.memForm="norm";
+			
 			b.frName.css("left","0");
 			b.frName.css("top","0");
 			b.frName.css("width",$("body").css("width"));
-			
+			b.frName.css("height",$("#main").css("height"));
+			if($("#"+b.frName.attr('id')+"").attr("id")=="fr_3"){ $("#fr_3_wrap").css("height",parseInt(b.frName.css("height"))-40+"px");
+			$("#fr_3_wrap").css("width",parseInt($("body").css("width"))-2+"px");
+			}
 			break;
 			case "full":b.frName.removeClass("full");b.frName.addClass("norm");b.resForm="norm";
-			b.frName.css("width","auto");break;
+			b.frName.css("width","auto");
+			b.frName.css("left",b.left);
+			b.frName.css("top",b.top);
+			b.frName.css("height","auto");
+			if($("#"+b.frName.attr('id')+"").attr("id")=="fr_3"){ $("#fr_3_wrap").css("height","225px");
+			$("#fr_3_wrap").css("width","800px");
+			}
 			
+			break;
 			
 			case "mini":b.frName.removeClass("mini");b.frName.addClass("full");b.resForm="full";b.memForm="mini";
 			b.frName.children(".wrapCont").show();
-			b.frName.css("height","auto");
+			
 			b.frName.children().children(".pagl").show();
 			
+			b.frName.css("left","0");
+			b.frName.css("top","0");
+			b.frName.css("width",$("body").css("width"));
+			b.frName.css("height",$("#main").css("height"));
+			if($("#"+b.frName.attr('id')+"").attr("id")=="fr_3"){ $("#fr_3_wrap").css("height",parseInt(b.frName.css("height"))-40+"px");
 			
+			
+			$("#fr_3_wrap").css("width",parseInt($("body").css("width"))-2+"px");
+			}
 			break;
 			
 			
 		}
-		fr0.frName.css("left","0");fr0.frName.css("top","0");
+		//fr0.frName.css("left","0");fr0.frName.css("top","0");
 	}
 	
 	
@@ -716,6 +747,9 @@ stop: function( event, ui ) {  var t= $(this).css('top')  ;var l= $(this).css('l
 				document.cookie = "left0="+l+"; expires=" + date.toUTCString();
 				document.cookie = "top0="+t+"; expires=" + date.toUTCString();
 				document.cookie = "z0="+z+"; expires=" + date.toUTCString();
+				fr0.left=l;
+				fr0.top=t;
+				fr0.width=$(this).css("width");
 				console.log(      
 				$(this).css('top'),
 				$(this).css('left')
@@ -727,6 +761,10 @@ stop: function( event, ui ) {  var t= $(this).css('top')  ;var l= $(this).css('l
 				document.cookie = "left1="+l+"; expires=" + date.toUTCString();
 				document.cookie = "top1="+t+"; expires=" + date.toUTCString();
 				document.cookie = "z1="+z+"; expires=" + date.toUTCString();
+				fr1.left=l;
+				fr1.top=t;
+				fr1.width=$(this).css("width");
+				
 				console.log(      
 				$(this).css('top'),
 				$(this).css('left')
@@ -737,6 +775,10 @@ stop: function( event, ui ) {  var t= $(this).css('top')  ;var l= $(this).css('l
 				document.cookie = "left2="+l+"; expires=" + date.toUTCString();
 				document.cookie = "top2="+t+"; expires=" + date.toUTCString();
 				document.cookie = "z2="+z+"; expires=" + date.toUTCString();
+				fr2.left=l;
+				fr2.top=t;
+				fr2.width=$(this).css("width");
+				
 				console.log(      
 				$(this).css('top'),
 				$(this).css('left')
@@ -747,6 +789,10 @@ stop: function( event, ui ) {  var t= $(this).css('top')  ;var l= $(this).css('l
 				document.cookie = "left3="+l+"; expires=" + date.toUTCString();
 				document.cookie = "top3="+t+"; expires=" + date.toUTCString();
 				document.cookie = "z3="+z+"; expires=" + date.toUTCString();
+				fr3.left=l;
+				fr3.top=t;
+				fr3.width=$(this).css("width");
+				
 				console.log(      
 				$(this).css('top'),
 				$(this).css('left')
@@ -853,8 +899,8 @@ getXMLFile("list.xml", function(xml){
 	}
 	}
 $(".n").click(refer);
-$("#fr_0 table").css("min-width",$("#fr_0 table").css("width"));
-$("#fr_1 table").css("min-width",$("#fr_1 table").css("width"));
+
+
 
 
 
